@@ -1,0 +1,27 @@
+export const eventData = {
+  date: '2025-05-16',
+  time: '08:00 AM',
+  location: 'Lima, Perú',
+  address: 'Parque Zonal Lomas de Lúcumo, Lima',
+  duration: '3-4 horas',
+  capacity: 300,
+  registrationDeadline: '2025-05-10',
+  minimumAge: 18,
+  maximumAge: 65,
+  requirements: [
+    'Edad mínima: 18 años',
+    'Consentimiento firmado y liberación de responsabilidad',
+    'Certificado médico de fitness',
+    'Equipo deportivo apropiado',
+    'Experiencia en entrenamiento funcional',
+  ],
+  amenities: [
+    'Estaciones de hidratación',
+    'Área de médicos en sitio',
+    'Equipo profesional de cronometraje',
+    'Soporte y motivadores en todo el circuito',
+  ],
+  parking: true,
+  wifi: true,
+  medicalSupport: true,
+}

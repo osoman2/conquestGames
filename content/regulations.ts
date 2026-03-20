@@ -1,0 +1,68 @@
+import { Regulation } from '@/types'
+
+export const regulations: Regulation[] = [
+  {
+    id: 'rule-1',
+    titleEs: 'Cumplimiento Técnico',
+    titleEn: 'Technical Compliance',
+    contentEs: 'Todos los movimientos deben ejecutarse con técnica completa. Los jueces revisarán cada repetición. Movimientos incompletos no serán contabilizados.',
+    contentEn: 'All movements must be performed with complete technique. Judges will review each rep. Incomplete reps will not be counted.',
+    category: 'rules',
+  },
+  {
+    id: 'rule-2',
+    titleEs: 'Tiempo Límite',
+    titleEn: 'Time Limit',
+    contentEs: 'El tiempo límite total es de 4 horas desde la salida. Los atletas que no crucen la línea de meta en este tiempo serán descalificados.',
+    contentEn: 'Total time limit is 4 hours from start. Athletes not crossing finish line within this time will be disqualified.',
+    category: 'rules',
+  },
+  {
+    id: 'safety-1',
+    titleEs: 'Equipo de Protección',
+    titleEn: 'Protective Gear',
+    contentEs: 'Se recomienda muñequeras, tobilleras y cinturón de levantamiento. El personal médico debe estar informado de lesiones previas.',
+    contentEn: 'Wrist wraps, ankle wraps, and lifting belt recommended. Medical staff must be informed of previous injuries.',
+    category: 'safety',
+  },
+  {
+    id: 'safety-2',
+    titleEs: 'Exención Médica',
+    titleEn: 'Medical Waiver',
+    contentEs: 'Certificado médico requerido 2 semanas antes del evento. El personal médico en sitio tiene autoridad para pausar o retirar atletas por seguridad.',
+    contentEn: 'Medical certificate required 2 weeks before event. On-site medical staff has authority to pause or withdraw athletes for safety.',
+    category: 'safety',
+  },
+  {
+    id: 'penalty-1',
+    titleEs: 'Falta de Técnica',
+    titleEn: 'Technique Faults',
+    contentEs: '1 falta de técnica = 5 segundos de penalización. 3 faltas = descalificación de la estación.',
+    contentEn: '1 technique fault = 5 second penalty. 3 faults = station disqualification.',
+    category: 'penalties',
+  },
+  {
+    id: 'penalty-2',
+    titleEs: 'Ayuda Externa',
+    titleEn: 'Outside Assistance',
+    contentEs: 'Cualquier ayuda de terceros resulta en descalificación inmediata del evento.',
+    contentEn: 'Any outside assistance results in immediate event disqualification.',
+    category: 'penalties',
+  },
+  {
+    id: 'logistics-1',
+    titleEs: 'Check-In',
+    titleEn: 'Check-In',
+    contentEs: 'Presentarse 1 hora antes del evento. Entrega de dorsal y briefing de seguridad obligatorio.',
+    contentEn: 'Arrive 1 hour before event. Bib pickup and mandatory safety briefing.',
+    category: 'logistics',
+  },
+  {
+    id: 'logistics-2',
+    titleEs: 'Resultados',
+    titleEn: 'Results',
+    contentEs: 'Los resultados se publicarán en vivo en el sitio web. Reclamaciones de resultado deben hacerse dentro de 30 minutos de finalizar.',
+    contentEn: 'Results published live on website. Result disputes must be filed within 30 minutes of finish.',
+    category: 'logistics',
+  },
+]
