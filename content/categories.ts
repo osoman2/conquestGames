@@ -9,6 +9,20 @@ export const categories: Category[] = [
     descriptionEn: 'For functional fitness athletes seeking their first serious competitive challenge.',
     ageMin: 18,
     ageMax: 35,
+    rulesEs: [
+      'Tiempo límite: 75 minutos para completar el circuito completo',
+      'Cargas reducidas al 60% del peso corporal en levantamientos',
+      'Se permiten sustituciones de movimiento por limitación física (previa aprobación)',
+      'Guía de recorrido disponible durante el evento',
+      'Penalización de 30 seg. por repetición no válida dictaminada por el juez',
+    ],
+    rulesEn: [
+      'Time limit: 75 minutes to complete the full circuit',
+      'Loads reduced to 60% of body weight on lifting stations',
+      'Movement substitutions allowed for physical limitations (prior approval required)',
+      'Course guide available throughout the event',
+      '30-sec penalty per invalid rep as ruled by the judge',
+    ],
   },
   {
     id: 'pro',
@@ -18,6 +32,20 @@ export const categories: Category[] = [
     descriptionEn: 'For elite athletes with high-level competition experience.',
     ageMin: 18,
     ageMax: 50,
+    rulesEs: [
+      'Tiempo límite: 60 minutos para completar el circuito completo',
+      'Cargas estándar según la tabla oficial de Conquest Games',
+      'Sin sustituciones — todos los movimientos son obligatorios',
+      'Estándares de movimiento revisados rep a rep por juez certificado',
+      'Elegible para clasificación al Ranking Latinoamericano Conquest',
+    ],
+    rulesEn: [
+      'Time limit: 60 minutes to complete the full circuit',
+      'Standard loads per the official Conquest Games weight table',
+      'No substitutions — all movements are mandatory',
+      'Movement standards reviewed rep by rep by a certified judge',
+      'Eligible for the Conquest Latin American Ranking',
+    ],
   },
   {
     id: 'masters',

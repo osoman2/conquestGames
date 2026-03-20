@@ -22,6 +22,8 @@ export type Category = {
   descriptionEn: string
   ageMin: number
   ageMax?: number
+  rulesEs?: string[]
+  rulesEn?: string[]
 }
 
 export type Regulation = {
