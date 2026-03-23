@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useLanguage } from '@/lib/language-context'
-import { circuitData } from '@/content/circuit-data'
+import { translations } from '@/lib/i18n'
 import { X, ChevronRight, Activity, Dumbbell, Wind, AlertTriangle } from 'lucide-react'
 
 type Stage = {
@@ -42,8 +42,9 @@ const stageIcons: Record<string, React.ElementType> = {
 
 export function InteractiveCircuit() {
   const { language } = useLanguage()
+  const t = translations[language]
   const [selectedStage, setSelectedStage] = useState<Stage | null>(null)
-  const stages = circuitData.stages as Stage[]
+  const stages = t.circuit.stages as unknown as Stage[]
 
   return (
     <section id="circuit" className="bg-[#0A0A0A] py-24 md:py-32 relative overflow-hidden">

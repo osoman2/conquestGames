@@ -40,6 +40,13 @@ export type Regulation = {
   category: 'rules' | 'safety' | 'penalties' | 'logistics'
 }
 
+export type TeammateData = {
+  firstName: string
+  lastName: string
+  dni: string
+  age: number
+}
+
 export type RegistrationFormData = {
   firstName: string
   lastName: string
@@ -48,12 +55,14 @@ export type RegistrationFormData = {
   phone: string
   age: number
   category: string
+  teammate?: TeammateData
   emergencyContactName: string
   emergencyContactPhone: string
   transferNumber: string
   insuranceProvider: string
   agreeToWaiver: boolean
   agreeToTerms: boolean
+  agreeToWaiverP2?: boolean
 }
 
 export type SubmissionStatus = 'idle' | 'loading' | 'success' | 'error'

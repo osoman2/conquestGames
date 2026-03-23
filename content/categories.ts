@@ -8,7 +8,7 @@ export const categories: Category[] = [
     descriptionEs: 'Para atletas con experiencia en funcional. Pueden usar estrategias de equipo para terminar el circuito.',
     descriptionEn: 'For athletes with functional fitness experience. Team strategies are allowed to complete the circuit.',
     ageMin: 18,
-    maxSpots: 60,
+    maxSpots: 25,
     rulesEs: [
       'Tiempo límite: 75 minutos para completar el circuito completo',
       'Guía de recorrido disponible durante el evento',
@@ -25,7 +25,7 @@ export const categories: Category[] = [
     descriptionEs: 'Para atletas de élite con experiencia en competencias de alto nivel.',
     descriptionEn: 'For elite athletes with high-level competition experience.',
     ageMin: 18,
-    maxSpots: 40,
+    maxSpots: 50,
     rulesEs: [
       'Tiempo límite: 60 minutos para completar el circuito completo',
       'Sin sustituciones — todos los movimientos son obligatorios',

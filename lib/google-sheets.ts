@@ -2,9 +2,11 @@ import { google } from 'googleapis'
 import { RegistrationFormData, RegistrationStats } from '@/types'
 
 // Column indices (0-based) in the Google Sheet
-// A=0  B=1  C=2  D=3  E=4  F=5  G=6  H=7  I=8  J=9  K=10  L=11  M=12
-// Timestamp | Nombre | Apellido | DNI | Email | Teléfono | Edad |
-// Categoría | Contacto Emergencia | Tel. Emergencia | Cód. Transferencia | Proveedor Seguro | Validado
+// A=0  B=1  C=2  D=3  E=4  F=5  G=6  H=7  I=8  J=9  K=10  L=11  M=12  N=13  O=14  P=15  Q=16  R=17  S=18
+// Timestamp | Nombre | Apellido | DNI | Email | Teléfono | Edad | Categoría |
+// Nombre P2 | Apellido P2 | DNI P2 | Edad P2 |
+// Contacto Emergencia | Tel. Emergencia | Cód. Transferencia | Proveedor Seguro |
+// Waiver P1 Firmado | Waiver P2 Firmado | Validado
 const COL = {
   TIMESTAMP: 0,
   FIRST_NAME: 1,
@@ -14,11 +16,17 @@ const COL = {
   PHONE: 5,
   AGE: 6,
   CATEGORY: 7,
-  EMERGENCY_NAME: 8,
-  EMERGENCY_PHONE: 9,
-  TRANSFER_NUMBER: 10,
-  INSURANCE_PROVIDER: 11,
-  VALIDATED: 12,
+  TEAMMATE_FIRST_NAME: 8,
+  TEAMMATE_LAST_NAME: 9,
+  TEAMMATE_DNI: 10,
+  TEAMMATE_AGE: 11,
+  EMERGENCY_NAME: 12,
+  EMERGENCY_PHONE: 13,
+  TRANSFER_NUMBER: 14,
+  INSURANCE_PROVIDER: 15,
+  WAIVER_P1_SIGNED: 16,
+  WAIVER_P2_SIGNED: 17,
+  VALIDATED: 18,
 }
 
 function getAuth() {
@@ -57,16 +65,22 @@ export async function appendRegistration(data: RegistrationFormData): Promise<vo
     data.phone,
     data.age,
     data.category,
+    data.teammate?.firstName ?? '',
+    data.teammate?.lastName ?? '',
+    data.teammate?.dni ?? '',
+    data.teammate?.age ?? '',
     data.emergencyContactName,
     data.emergencyContactPhone,
     data.transferNumber,
     data.insuranceProvider,
+    data.agreeToWaiver ? 'SI' : '',   // Waiver P1 Firmado — siempre 'SI' al llegar aquí
+    data.agreeToWaiverP2 ? 'SI' : '', // Waiver P2 Firmado — 'SI' para Amateur, vacío para Pro
     '', // Validado — left blank for organizers
   ]
 
   await sheets.spreadsheets.values.append({
     spreadsheetId,
-    range: 'Sheet1!A:M',
+    range: 'Sheet1!A:S',
     valueInputOption: 'USER_ENTERED',
     requestBody: { values: [row] },
   })
@@ -84,7 +98,7 @@ export async function getValidatedStats(): Promise<RegistrationStats> {
 
   const res = await sheets.spreadsheets.values.get({
     spreadsheetId,
-    range: 'Sheet1!A:M',
+    range: 'Sheet1!A:S',
   })
 
   const rows = res.data.values ?? []

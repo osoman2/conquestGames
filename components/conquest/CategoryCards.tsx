@@ -102,21 +102,21 @@ export function CategoryCards() {
               <div className="flex items-center justify-between text-xs font-sans">
                 <span className="flex items-center gap-1.5 text-muted-foreground">
                   <Users size={12} className="text-gold" aria-hidden="true" />
-                  {language === 'es' ? 'Cupos' : 'Spots'}
+                  {language === 'es' ? 'Equipos' : 'Teams'}
                 </span>
                 <span className="text-foreground font-semibold">
                   {stats !== null ? stats.amateur : '—'}
-                  <span className="text-muted-foreground font-normal"> / {amateur.maxSpots}</span>
+                  <span className="text-muted-foreground font-normal"> / {amateur.maxSpots ?? 25}</span>
                 </span>
               </div>
               <div className="w-full h-1.5 bg-[#1E1E1E] rounded-full overflow-hidden">
                 <div
                   className="h-full bg-gold/60 rounded-full transition-all duration-700"
-                  style={{ width: stats !== null ? `${Math.min((stats.amateur / (amateur.maxSpots ?? 60)) * 100, 100)}%` : '0%' }}
+                  style={{ width: stats !== null ? `${Math.min((stats.amateur / (amateur.maxSpots ?? 25)) * 100, 100)}%` : '0%' }}
                   aria-hidden="true"
                 />
               </div>
-              {stats !== null && stats.amateur >= (amateur.maxSpots ?? 60) && (
+              {stats !== null && stats.amateur >= (amateur.maxSpots ?? 25) && (
                 <span className="text-xs text-red-400 font-sans font-semibold">
                   {language === 'es' ? '¡Cupos agotados!' : 'Sold out!'}
                 </span>
@@ -186,17 +186,17 @@ export function CategoryCards() {
                 </span>
                 <span className="text-foreground font-semibold">
                   {stats !== null ? stats.pro : '—'}
-                  <span className="text-muted-foreground font-normal"> / {pro.maxSpots}</span>
+                  <span className="text-muted-foreground font-normal"> / {pro.maxSpots ?? 50}</span>
                 </span>
               </div>
               <div className="w-full h-1.5 bg-[#1E1E1E] rounded-full overflow-hidden">
                 <div
                   className="h-full bg-gold rounded-full transition-all duration-700"
-                  style={{ width: stats !== null ? `${Math.min((stats.pro / (pro.maxSpots ?? 40)) * 100, 100)}%` : '0%' }}
+                  style={{ width: stats !== null ? `${Math.min((stats.pro / (pro.maxSpots ?? 50)) * 100, 100)}%` : '0%' }}
                   aria-hidden="true"
                 />
               </div>
-              {stats !== null && stats.pro >= (pro.maxSpots ?? 40) && (
+              {stats !== null && stats.pro >= (pro.maxSpots ?? 50) && (
                 <span className="text-xs text-red-400 font-sans font-semibold">
                   {language === 'es' ? '¡Cupos agotados!' : 'Sold out!'}
                 </span>

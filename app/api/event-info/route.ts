@@ -11,12 +11,14 @@ const eventInfo = {
     venue: 'Lima, Perú — local por definir',
   },
   format: 'Hybrid — Running + Functional',
+  maxRegistrations: 75,
   maxAthletes: 100,
   categories: [
     {
       id: 'amateur',
       name: 'Amateur',
       type: 'Team (2 persons)',
+      maxSpots: 25,
       timeLimit: '75 minutes',
       description: 'Team of 2 athletes. Both members must run together at all times. Course guide available.',
     },
@@ -24,6 +26,7 @@ const eventInfo = {
       id: 'pro',
       name: 'Pro',
       type: 'Individual',
+      maxSpots: 50,
       timeLimit: '60 minutes',
       description: 'Solo performance — no substitutions, eligible for the Conquest Ranking.',
     },

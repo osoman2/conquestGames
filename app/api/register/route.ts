@@ -27,6 +27,23 @@ export async function POST(req: NextRequest) {
       )
     }
 
+    // Amateur requires teammate data and P2 waiver acceptance
+    if (body.category === 'amateur') {
+      const t = body.teammate
+      if (!t?.firstName || !t?.lastName || !t?.dni || !t?.age) {
+        return NextResponse.json(
+          { error: 'Teammate data is required for Amateur category' },
+          { status: 400 }
+        )
+      }
+      if (!body.agreeToWaiverP2) {
+        return NextResponse.json(
+          { error: 'Teammate must accept the liability waiver' },
+          { status: 400 }
+        )
+      }
+    }
+
     // Write to Google Sheets
     await appendRegistration(body)
 

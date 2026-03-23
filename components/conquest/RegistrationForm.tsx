@@ -2,8 +2,8 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { useLanguage } from '@/lib/language-context'
-import { AlertCircle, CheckCircle, Pen, Trash2 } from 'lucide-react'
-import { RegistrationFormData, SubmissionStatus } from '@/types'
+import { AlertCircle, Pen, Trash2, Trophy, X } from 'lucide-react'
+import { RegistrationFormData, SubmissionStatus, TeammateData } from '@/types'
 import { siteCopy } from '@/content/site-copy'
 import { categories } from '@/content/categories'
 
@@ -30,24 +30,40 @@ export function RegistrationForm() {
   const [status, setStatus] = useState<SubmissionStatus>('idle')
   const [showWaiverModal, setShowWaiverModal] = useState(false)
 
-  // Signature canvas
+  const isAmateur = formData.category === 'amateur'
+
+  const emptyTeammate: TeammateData = { firstName: '', lastName: '', dni: '', age: 18 }
+  const [teammate, setTeammate] = useState<TeammateData>(emptyTeammate)
+
+  const handleTeammateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    setTeammate(prev => ({ ...prev, [name]: name === 'age' ? Number(value) : value }))
+  }
+
+  // Signature canvas — P1
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const isDrawingRef = useRef(false)
   const [hasSigned, setHasSigned] = useState(false)
 
+  // Signature canvas — P2 (Amateur only)
+  const canvasRef2 = useRef<HTMLCanvasElement>(null)
+  const isDrawingRef2 = useRef(false)
+  const [hasSigned2, setHasSigned2] = useState(false)
+
   useEffect(() => {
     if (showWaiverModal) {
       setHasSigned(false)
+      setHasSigned2(false)
       setTimeout(() => {
-        const canvas = canvasRef.current
-        if (!canvas) return
-        canvas.width = canvas.offsetWidth || 560
-        canvas.height = 120
-        const ctx = canvas.getContext('2d')
-        if (ctx) {
-          ctx.fillStyle = '#1A1A1A'
-          ctx.fillRect(0, 0, canvas.width, canvas.height)
+        const initCanvas = (canvas: HTMLCanvasElement | null) => {
+          if (!canvas) return
+          canvas.width = canvas.offsetWidth || 260
+          canvas.height = 120
+          const ctx = canvas.getContext('2d')
+          if (ctx) { ctx.fillStyle = '#1A1A1A'; ctx.fillRect(0, 0, canvas.width, canvas.height) }
         }
+        initCanvas(canvasRef.current)
+        initCanvas(canvasRef2.current)
       }, 50)
     }
   }, [showWaiverModal])
@@ -100,6 +116,55 @@ export function RegistrationForm() {
     setHasSigned(false)
   }
 
+  // P2 canvas handlers
+  const getCanvasPos2 = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
+    const canvas = canvasRef2.current!
+    const rect = canvas.getBoundingClientRect()
+    const scaleX = canvas.width / rect.width
+    const scaleY = canvas.height / rect.height
+    if ('touches' in e) {
+      return { x: (e.touches[0].clientX - rect.left) * scaleX, y: (e.touches[0].clientY - rect.top) * scaleY }
+    }
+    return { x: (e.clientX - rect.left) * scaleX, y: (e.clientY - rect.top) * scaleY }
+  }
+
+  const startDraw2 = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
+    e.preventDefault()
+    isDrawingRef2.current = true
+    const ctx = canvasRef2.current?.getContext('2d')
+    if (!ctx) return
+    const pos = getCanvasPos2(e)
+    ctx.beginPath()
+    ctx.moveTo(pos.x, pos.y)
+  }
+
+  const draw2 = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
+    e.preventDefault()
+    if (!isDrawingRef2.current) return
+    const ctx = canvasRef2.current?.getContext('2d')
+    if (!ctx) return
+    ctx.strokeStyle = '#C9A84C'
+    ctx.lineWidth = 2.5
+    ctx.lineCap = 'round'
+    ctx.lineJoin = 'round'
+    const pos = getCanvasPos2(e)
+    ctx.lineTo(pos.x, pos.y)
+    ctx.stroke()
+    if (!hasSigned2) setHasSigned2(true)
+  }
+
+  const endDraw2 = () => { isDrawingRef2.current = false }
+
+  const clearCanvas2 = () => {
+    const canvas = canvasRef2.current
+    if (!canvas) return
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+    ctx.fillStyle = '#1A1A1A'
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    setHasSigned2(false)
+  }
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target
     setFormData(prev => ({
@@ -116,12 +181,21 @@ export function RegistrationForm() {
       return
     }
 
+    if (isAmateur && !formData.agreeToWaiverP2) {
+      alert(language === 'es' ? 'El/la compañero/a también debe aceptar la exención de responsabilidad' : 'Your teammate must also accept the liability waiver')
+      return
+    }
+
     setStatus('loading')
     try {
+      const payload: RegistrationFormData = {
+        ...formData,
+        teammate: isAmateur ? teammate : undefined,
+      }
       const res = await fetch('/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       })
       if (!res.ok) throw new Error('Server error')
       setStatus('success')
@@ -140,7 +214,7 @@ export function RegistrationForm() {
         agreeToWaiver: false,
         agreeToTerms: false,
       })
-      setTimeout(() => setStatus('idle'), 5000)
+      setTeammate(emptyTeammate)
     } catch (error) {
       console.error(error)
       setStatus('error')
@@ -176,20 +250,7 @@ export function RegistrationForm() {
           <div className="conquest-separator" />
         </div>
 
-        {/* Success state */}
-        {status === 'success' && (
-          <div className="bg-green-900/20 border border-green-700/40 p-6 flex gap-4">
-            <CheckCircle size={24} className="text-green-600 flex-shrink-0" aria-hidden="true" />
-            <div className="flex flex-col gap-2">
-              <span className="font-display uppercase tracking-widest text-sm text-green-600">
-                {language === 'es' ? 'Éxito' : 'Success'}
-              </span>
-              <p className="text-sm text-foreground/80">
-                {copy.registration.success}
-              </p>
-            </div>
-          </div>
-        )}
+        {/* Success state — inline fallback (hidden, modal handles this) */}
 
         {/* Error state */}
         {status === 'error' && (
@@ -211,7 +272,9 @@ export function RegistrationForm() {
           {/* Personal Info */}
           <fieldset className="flex flex-col gap-6 border border-[#2A2A2A] p-8">
             <legend className="text-sm font-display uppercase tracking-widest text-gold">
-              {language === 'es' ? 'Información Personal' : 'Personal Information'}
+              {isAmateur
+                ? copy.registration.participant1
+                : (language === 'es' ? 'Información Personal' : 'Personal Information')}
             </legend>
 
             <div className="grid md:grid-cols-2 gap-6">
@@ -304,6 +367,82 @@ export function RegistrationForm() {
               </div>
             </div>
           </fieldset>
+
+          {/* Participant 2 — Amateur only */}
+          {isAmateur && (
+            <fieldset className="flex flex-col gap-6 border border-gold/30 bg-gold/5 p-8">
+              <legend className="text-sm font-display uppercase tracking-widest text-gold">
+                {copy.registration.participant2}
+              </legend>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="teammate_firstName" className={labelClass}>
+                    {copy.registration.firstName}
+                  </label>
+                  <input
+                    id="teammate_firstName"
+                    name="firstName"
+                    type="text"
+                    required={isAmateur}
+                    maxLength={50}
+                    value={teammate.firstName}
+                    onChange={handleTeammateChange}
+                    className={inputClass}
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="teammate_lastName" className={labelClass}>
+                    {copy.registration.lastName}
+                  </label>
+                  <input
+                    id="teammate_lastName"
+                    name="lastName"
+                    type="text"
+                    required={isAmateur}
+                    maxLength={50}
+                    value={teammate.lastName}
+                    onChange={handleTeammateChange}
+                    className={inputClass}
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="teammate_dni" className={labelClass}>
+                    {copy.registration.dni}
+                  </label>
+                  <input
+                    id="teammate_dni"
+                    name="dni"
+                    type="text"
+                    required={isAmateur}
+                    placeholder="12345678"
+                    maxLength={8}
+                    inputMode="numeric"
+                    pattern="[0-9]{7,8}"
+                    value={teammate.dni}
+                    onChange={handleTeammateChange}
+                    className={inputClass}
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="teammate_age" className={labelClass}>
+                    {copy.registration.age}
+                  </label>
+                  <input
+                    id="teammate_age"
+                    name="age"
+                    type="number"
+                    min="18"
+                    max="120"
+                    required={isAmateur}
+                    value={teammate.age}
+                    onChange={handleTeammateChange}
+                    className={inputClass}
+                  />
+                </div>
+              </div>
+
+            </fieldset>
+          )}
 
           {/* Contact Info */}
           <fieldset className="flex flex-col gap-6 border border-[#2A2A2A] p-8">
@@ -496,8 +635,8 @@ export function RegistrationForm() {
 
       {/* Waiver Modal */}
       {showWaiverModal && (
-        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-6 md:p-0">
-          <div className="bg-[#111111] border border-[#2A2A2A] max-w-2xl w-full max-h-[80vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 md:p-6">
+          <div className="bg-[#111111] border border-[#2A2A2A] max-w-4xl w-full max-h-[90vh] overflow-y-auto">
             <div className="sticky top-0 bg-[#0A0A0A] border-b border-[#2A2A2A] p-6 flex items-center justify-between">
               <h3 className="font-display text-lg uppercase tracking-widest">
                 {language === 'es' ? 'Exención de Responsabilidad' : 'Liability Waiver'}
@@ -544,47 +683,82 @@ export function RegistrationForm() {
                   : 'I authorize the use of my personal data for event management and the use of photographs or videos featuring me, for Conquest Games promotional and informational purposes.'}</p>
               </div>
 
-              {/* Signature pad */}
-              <div className="flex flex-col gap-2 pt-2">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-xs font-display uppercase tracking-widest text-gold font-semibold">
-                    <Pen size={12} />
-                    {language === 'es' ? 'Firma aquí para aceptar' : 'Sign here to accept'}
+              {/* Signature pads */}
+              <div className={`grid gap-4 pt-2 ${isAmateur ? 'md:grid-cols-2' : 'grid-cols-1'}`}>
+
+                {/* P1 canvas */}
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-xs font-display uppercase tracking-widest text-gold font-semibold">
+                      <Pen size={12} />
+                      {isAmateur
+                        ? (language === 'es' ? 'Firma Participante 1' : 'Participant 1 Signature')
+                        : (language === 'es' ? 'Firma aquí para aceptar' : 'Sign here to accept')}
+                    </div>
+                    <button type="button" onClick={clearCanvas} className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors">
+                      <Trash2 size={12} />
+                      {language === 'es' ? 'Borrar' : 'Clear'}
+                    </button>
                   </div>
-                  <button
-                    type="button"
-                    onClick={clearCanvas}
-                    className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    <Trash2 size={12} />
-                    {language === 'es' ? 'Borrar' : 'Clear'}
-                  </button>
+                  <canvas
+                    ref={canvasRef}
+                    style={{ width: '100%', height: '120px', touchAction: 'none', cursor: 'crosshair' }}
+                    className="border border-[#2A2A2A] hover:border-gold/40 transition-colors"
+                    onMouseDown={startDraw}
+                    onMouseMove={draw}
+                    onMouseUp={endDraw}
+                    onMouseLeave={endDraw}
+                    onTouchStart={startDraw}
+                    onTouchMove={draw}
+                    onTouchEnd={endDraw}
+                  />
+                  {!hasSigned && (
+                    <p className="text-xs text-muted-foreground/60 font-sans italic">
+                      {language === 'es' ? '↑ Firma para habilitar' : '↑ Sign to enable'}
+                    </p>
+                  )}
                 </div>
-                <canvas
-                  ref={canvasRef}
-                  style={{ width: '100%', height: '120px', touchAction: 'none', cursor: 'crosshair' }}
-                  className="border border-[#2A2A2A] hover:border-gold/40 transition-colors"
-                  onMouseDown={startDraw}
-                  onMouseMove={draw}
-                  onMouseUp={endDraw}
-                  onMouseLeave={endDraw}
-                  onTouchStart={startDraw}
-                  onTouchMove={draw}
-                  onTouchEnd={endDraw}
-                />
-                {!hasSigned && (
-                  <p className="text-xs text-muted-foreground/60 font-sans italic">
-                    {language === 'es' ? '↑ Firma arriba para habilitar la aceptación' : '↑ Sign above to enable acceptance'}
-                  </p>
+
+                {/* P2 canvas — Amateur only */}
+                {isAmateur && (
+                  <div className="flex flex-col gap-2">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2 text-xs font-display uppercase tracking-widest text-gold font-semibold">
+                        <Pen size={12} />
+                        {language === 'es' ? 'Firma Participante 2' : 'Participant 2 Signature'}
+                      </div>
+                      <button type="button" onClick={clearCanvas2} className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors">
+                        <Trash2 size={12} />
+                        {language === 'es' ? 'Borrar' : 'Clear'}
+                      </button>
+                    </div>
+                    <canvas
+                      ref={canvasRef2}
+                      style={{ width: '100%', height: '120px', touchAction: 'none', cursor: 'crosshair' }}
+                      className="border border-[#2A2A2A] hover:border-gold/40 transition-colors"
+                      onMouseDown={startDraw2}
+                      onMouseMove={draw2}
+                      onMouseUp={endDraw2}
+                      onMouseLeave={endDraw2}
+                      onTouchStart={startDraw2}
+                      onTouchMove={draw2}
+                      onTouchEnd={endDraw2}
+                    />
+                    {!hasSigned2 && (
+                      <p className="text-xs text-muted-foreground/60 font-sans italic">
+                        {language === 'es' ? '↑ Firma para habilitar' : '↑ Sign to enable'}
+                      </p>
+                    )}
+                  </div>
                 )}
               </div>
             </div>
 
             <div className="sticky bottom-0 bg-[#0A0A0A] border-t border-[#2A2A2A] p-6 flex gap-4">
               <button
-                disabled={!hasSigned}
+                disabled={!hasSigned || (isAmateur && !hasSigned2)}
                 onClick={() => {
-                  setFormData(prev => ({ ...prev, agreeToWaiver: true }))
+                  setFormData(prev => ({ ...prev, agreeToWaiver: true, agreeToWaiverP2: isAmateur ? true : prev.agreeToWaiverP2 }))
                   setShowWaiverModal(false)
                 }}
                 className="flex-1 bg-gold text-black px-6 py-3 font-display font-bold uppercase tracking-widest text-xs hover:bg-gold-bright transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
@@ -598,6 +772,56 @@ export function RegistrationForm() {
                 {language === 'es' ? 'Cerrar' : 'Close'}
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Success Modal */}
+      {status === 'success' && (
+        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-6">
+          <div className="bg-[#111111] border border-gold/40 max-w-md w-full flex flex-col items-center text-center p-10 gap-6 relative">
+
+            {/* Close button */}
+            <button
+              onClick={() => setStatus('idle')}
+              className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="Cerrar"
+            >
+              <X size={18} />
+            </button>
+
+            {/* Trophy icon */}
+            <div className="w-20 h-20 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center">
+              <Trophy size={40} className="text-gold" />
+            </div>
+
+            {/* Title */}
+            <div className="flex flex-col gap-2">
+              <h3 className="font-display text-2xl uppercase tracking-widest text-gold">
+                {language === 'es' ? '¡Inscripción Exitosa!' : 'Registration Complete!'}
+              </h3>
+              <p className="text-sm text-foreground/70 leading-relaxed font-sans">
+                {copy.registration.success}
+              </p>
+            </div>
+
+            {/* Divider */}
+            <div className="w-12 h-px bg-gold/40" />
+
+            {/* Detail */}
+            <p className="text-xs text-muted-foreground font-sans leading-relaxed">
+              {language === 'es'
+                ? 'Revisaremos tu inscripción y te contactaremos para confirmar tu cupo. ¡Prepárate para conquistar!'
+                : 'We will review your registration and contact you to confirm your spot. Get ready to conquer!'}
+            </p>
+
+            {/* CTA */}
+            <button
+              onClick={() => setStatus('idle')}
+              className="w-full bg-gold text-black px-6 py-3 font-display font-bold uppercase tracking-widest text-xs hover:bg-gold-bright transition-all duration-200"
+            >
+              {language === 'es' ? 'Cerrar' : 'Close'}
+            </button>
           </div>
         </div>
       )}

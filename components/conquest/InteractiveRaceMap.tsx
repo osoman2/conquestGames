@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useLanguage } from '@/lib/language-context'
+import { translations } from '@/lib/i18n'
 import { X, Play, Activity, Dumbbell, Wind, Anchor, Target, Zap, Trophy } from 'lucide-react'
 
 type Stage = {
@@ -58,10 +59,12 @@ const zoneCoordinates = [
 ]
 
 export function InteractiveRaceMap() {
-  const { t, lang } = useLanguage()
+  const { language } = useLanguage()
+  const t = translations[language]
+  const lang = language
   const [selectedStage, setSelectedStage] = useState<Stage | null>(null)
   const [hoveredStage, setHoveredStage] = useState<number | null>(null)
-  const stages = t.circuit.stages as Stage[]
+  const stages = t.circuit.stages as unknown as Stage[]
 
   const handleZoneClick = (stageId: number) => {
     const stage = stages.find((s) => s.id === stageId)

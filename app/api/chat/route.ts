@@ -14,7 +14,7 @@ Información clave:
 - Edad mínima: 18 años
 - Requisitos: consentimiento firmado, certificado médico, experiencia en funcional
 - Circuito (orden): Running 1 (1.2 km) → Farmer Carry (2 rectas) → Running 2 (1.2 km) → Kettlebell Swings (30 reps) → Running 3 (1.2 km) → Burpees Avanzando (2 rectas) → Running Final (1.2 km). Total: 4.8 km, 7 estaciones.
-- Cupos: 60 amateur + 40 pro = 100 atletas en total, cupos muy limitados
+- Cupos: Amateur: 25 equipos (50 personas en total) | Pro: 50 atletas individuales. Total: 75 inscripciones, 100 atletas. ¡Cupos muy limitados!
 - Precio: Disponible en el formulario de inscripción en la web
 - Contacto: info@conquestgames.pe
 
@@ -37,7 +37,7 @@ Key info:
 - Minimum age: 18 years
 - Requirements: signed consent, medical certificate, functional training experience
 - Circuit (order): Running 1 (1.2 km) → Farmer Carry (2 straights) → Running 2 (1.2 km) → Kettlebell Swings (30 reps) → Running 3 (1.2 km) → Burpees Forward (2 straights) → Final Running (1.2 km). Total: 4.8 km, 7 stations.
-- Spots: 60 amateur + 40 pro = 100 athletes total, very limited
+- Spots: Amateur: 25 teams (50 athletes total) | Pro: 50 individual athletes. Total: 75 registrations, 100 athletes. Very limited!
 - Price: Available in the registration form on the website
 - Contact: info@conquestgames.pe
 

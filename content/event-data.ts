@@ -7,7 +7,7 @@ export const eventData = {
     es: '5 horas de competencia',
     en: '5 hours of competition',
   },
-  capacity: 400,
+  capacity: 75, // 25 equipos amateur (50 personas) + 50 pro individuales
   registrationDeadline: '2025-05-10',
   minimumAge: 18,
   maximumAge: 65,
