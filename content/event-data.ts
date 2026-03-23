@@ -2,7 +2,7 @@ export const eventData = {
   date: '2025-05-16',
   time: '08:00 AM',
   location: 'Lima, Perú',
-  address: 'Parque Zonal Lomas de Lúcumo, Lima',
+  address: 'Lima, Perú — local por definir',
   duration: {
     es: '5 horas de competencia',
     en: '5 hours of competition',

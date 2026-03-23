@@ -8,7 +8,7 @@ const eventInfo = {
   location: {
     city: 'Lima',
     country: 'Perú',
-    venue: 'Parque Zonal Lomas de Lúcumo, Lima',
+    venue: 'Lima, Perú — local por definir',
   },
   format: 'Hybrid — Running + Functional',
   maxAthletes: 100,

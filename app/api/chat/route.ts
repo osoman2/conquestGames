@@ -7,7 +7,7 @@ Responde ÚNICAMENTE preguntas relacionadas con el evento. Sé conciso, amable y
 
 Información clave:
 - Fecha: 16 de mayo de 2025, 08:00 AM — Lima, Perú
-- Lugar: Parque Zonal Lomas de Lúcumo, Lima
+- Lugar: Lima, Perú (local por definir)
 - Categorías:
   · Amateur: equipos de 2 personas, tiempo límite 75 minutos. Ambos integrantes deben correr juntos en todos los tramos. Guía de recorrido disponible.
   · Pro: individual, tiempo límite 60 minutos. Sin sustituciones. Clasifica al Ranking Conquest.
@@ -30,7 +30,7 @@ Answer ONLY questions about the event. Be concise, friendly and direct (max 3-4 
 
 Key info:
 - Date: May 16, 2025, 08:00 AM — Lima, Peru
-- Venue: Parque Zonal Lomas de Lúcumo, Lima
+- Venue: Lima, Peru (venue to be confirmed)
 - Categories:
   · Amateur: teams of 2, time limit 75 minutes. Both members must run together at all times. Course guide available.
   · Pro: individual, time limit 60 minutes. No substitutions. Eligible for the Conquest Ranking.
