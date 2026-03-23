@@ -1,9 +1,11 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { useLanguage } from '@/lib/language-context'
-import { CheckCircle, ShieldCheck } from 'lucide-react'
+import { CheckCircle, ShieldCheck, Users } from 'lucide-react'
 import { categories } from '@/content/categories'
 import { siteCopy } from '@/content/site-copy'
+import { RegistrationStats } from '@/types'
 
 export function CategoryCards() {
   const { language } = useLanguage()
@@ -15,6 +17,23 @@ export function CategoryCards() {
   const rulesLabel = language === 'es' ? 'Reglas de Categoría' : 'Category Rules'
   const registerLabel = language === 'es' ? 'Inscribirse' : 'Register'
   const noLimitLabel = language === 'es' ? 'Sin límite' : 'No limit'
+
+  const [stats, setStats] = useState<RegistrationStats | null>(null)
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const res = await fetch('/api/stats')
+        if (res.ok) setStats(await res.json())
+      } catch {
+        // silently fail — the count badge just won't show
+      }
+    }
+    fetchStats()
+    // Refresh every 60 seconds
+    const interval = setInterval(fetchStats, 60_000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <section id="categories" className="bg-background py-24 md:py-32">
@@ -78,6 +97,32 @@ export function CategoryCards() {
               </div>
             )}
 
+            {/* Capacity bar */}
+            <div className="flex flex-col gap-2 border-t border-[#1A1A1A] pt-4">
+              <div className="flex items-center justify-between text-xs font-sans">
+                <span className="flex items-center gap-1.5 text-muted-foreground">
+                  <Users size={12} className="text-gold" aria-hidden="true" />
+                  {language === 'es' ? 'Cupos' : 'Spots'}
+                </span>
+                <span className="text-foreground font-semibold">
+                  {stats !== null ? stats.amateur : '—'}
+                  <span className="text-muted-foreground font-normal"> / {amateur.maxSpots}</span>
+                </span>
+              </div>
+              <div className="w-full h-1.5 bg-[#1E1E1E] rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-gold/60 rounded-full transition-all duration-700"
+                  style={{ width: stats !== null ? `${Math.min((stats.amateur / (amateur.maxSpots ?? 60)) * 100, 100)}%` : '0%' }}
+                  aria-hidden="true"
+                />
+              </div>
+              {stats !== null && stats.amateur >= (amateur.maxSpots ?? 60) && (
+                <span className="text-xs text-red-400 font-sans font-semibold">
+                  {language === 'es' ? '¡Cupos agotados!' : 'Sold out!'}
+                </span>
+              )}
+            </div>
+
             <a
               href="#register"
               className="self-start font-display uppercase tracking-widest text-xs border border-[#2A2A2A] hover:border-gold text-foreground hover:text-gold px-6 py-3 transition-all duration-200 font-semibold mt-auto"
@@ -131,6 +176,32 @@ export function CategoryCards() {
                 </ul>
               </div>
             )}
+
+            {/* Capacity bar */}
+            <div className="flex flex-col gap-2 border-t border-[#2A2A2A] pt-4">
+              <div className="flex items-center justify-between text-xs font-sans">
+                <span className="flex items-center gap-1.5 text-muted-foreground">
+                  <Users size={12} className="text-gold" aria-hidden="true" />
+                  {language === 'es' ? 'Cupos' : 'Spots'}
+                </span>
+                <span className="text-foreground font-semibold">
+                  {stats !== null ? stats.pro : '—'}
+                  <span className="text-muted-foreground font-normal"> / {pro.maxSpots}</span>
+                </span>
+              </div>
+              <div className="w-full h-1.5 bg-[#1E1E1E] rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-gold rounded-full transition-all duration-700"
+                  style={{ width: stats !== null ? `${Math.min((stats.pro / (pro.maxSpots ?? 40)) * 100, 100)}%` : '0%' }}
+                  aria-hidden="true"
+                />
+              </div>
+              {stats !== null && stats.pro >= (pro.maxSpots ?? 40) && (
+                <span className="text-xs text-red-400 font-sans font-semibold">
+                  {language === 'es' ? '¡Cupos agotados!' : 'Sold out!'}
+                </span>
+              )}
+            </div>
 
             <a
               href="#register"

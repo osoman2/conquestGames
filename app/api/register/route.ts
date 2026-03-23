@@ -1,25 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
-
-export interface RegistrationPayload {
-  name: string
-  email: string
-  category: string
-  teamName?: string
-  experience: string
-  phone?: string
-}
-
-// Mock in-memory storage — replace with real DB in production
-const registrations: RegistrationPayload[] = []
+import { appendRegistration } from '@/lib/google-sheets'
+import { RegistrationFormData } from '@/types'
 
 export async function POST(req: NextRequest) {
   try {
-    const body = (await req.json()) as RegistrationPayload
+    const body = (await req.json()) as RegistrationFormData
 
     // Basic validation
-    if (!body.name || !body.email || !body.category || !body.experience) {
+    if (!body.firstName || !body.lastName || !body.email || !body.category) {
       return NextResponse.json(
-        { error: 'Missing required fields: name, email, category, experience' },
+        { error: 'Missing required fields' },
         { status: 400 }
       )
     }
@@ -30,36 +20,22 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid email format' }, { status: 400 })
     }
 
-    // Check spots
-    if (registrations.length >= 100) {
-      return NextResponse.json({ error: 'No spots available' }, { status: 409 })
+    if (!body.transferNumber || !body.insuranceProvider) {
+      return NextResponse.json(
+        { error: 'Transfer number and insurance provider are required' },
+        { status: 400 }
+      )
     }
 
-    // Check duplicate email
-    if (registrations.some((r) => r.email === body.email)) {
-      return NextResponse.json({ error: 'Email already registered' }, { status: 409 })
-    }
-
-    registrations.push(body)
+    // Write to Google Sheets
+    await appendRegistration(body)
 
     return NextResponse.json(
-      {
-        success: true,
-        message: 'Registration successful',
-        totalRegistrations: registrations.length,
-        spotsRemaining: 100 - registrations.length,
-      },
+      { success: true, message: 'Registration successful' },
       { status: 201 }
     )
-  } catch {
+  } catch (err) {
+    console.error('[register POST]', err)
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
-}
-
-export async function GET() {
-  return NextResponse.json({
-    totalRegistrations: registrations.length,
-    spotsRemaining: 100 - registrations.length,
-    maxAthletes: 100,
-  })
 }

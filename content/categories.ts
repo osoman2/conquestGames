@@ -9,6 +9,7 @@ export const categories: Category[] = [
     descriptionEn: 'For functional fitness athletes seeking their first serious competitive challenge.',
     ageMin: 18,
     ageMax: 35,
+    maxSpots: 60,
     rulesEs: [
       'Tiempo límite: 75 minutos para completar el circuito completo',
       'Cargas reducidas al 60% del peso corporal en levantamientos',
@@ -32,6 +33,7 @@ export const categories: Category[] = [
     descriptionEn: 'For elite athletes with high-level competition experience.',
     ageMin: 18,
     ageMax: 50,
+    maxSpots: 40,
     rulesEs: [
       'Tiempo límite: 60 minutos para completar el circuito completo',
       'Cargas estándar según la tabla oficial de Conquest Games',

@@ -22,6 +22,7 @@ export type Category = {
   descriptionEn: string
   ageMin: number
   ageMax?: number
+  maxSpots?: number
   rulesEs?: string[]
   rulesEn?: string[]
 }
@@ -45,8 +46,17 @@ export type RegistrationFormData = {
   category: string
   emergencyContactName: string
   emergencyContactPhone: string
+  transferNumber: string
+  insuranceProvider: string
   agreeToWaiver: boolean
   agreeToTerms: boolean
 }
 
 export type SubmissionStatus = 'idle' | 'loading' | 'success' | 'error'
+
+export type RegistrationStats = {
+  pro: number
+  amateur: number
+  masters: number
+  total: number
+}

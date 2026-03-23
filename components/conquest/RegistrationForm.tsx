@@ -21,6 +21,8 @@ export function RegistrationForm() {
     category: categories[0].id,
     emergencyContactName: '',
     emergencyContactPhone: '',
+    transferNumber: '',
+    insuranceProvider: '',
     agreeToWaiver: false,
     agreeToTerms: false,
   })
@@ -133,6 +135,8 @@ export function RegistrationForm() {
         category: categories[0].id,
         emergencyContactName: '',
         emergencyContactPhone: '',
+        transferNumber: '',
+        insuranceProvider: '',
         agreeToWaiver: false,
         agreeToTerms: false,
       })
@@ -291,7 +295,7 @@ export function RegistrationForm() {
                   onChange={handleChange}
                   className={inputClass}
                 >
-                  {categories.map(cat => (
+                  {categories.filter(cat => cat.id !== 'masters').map(cat => (
                     <option key={cat.id} value={cat.id}>
                       {language === 'es' ? cat.nameEs : cat.nameEn}
                     </option>
@@ -375,6 +379,51 @@ export function RegistrationForm() {
                   required
                   maxLength={15}
                   value={formData.emergencyContactPhone}
+                  onChange={handleChange}
+                  className={inputClass}
+                />
+              </div>
+            </div>
+          </fieldset>
+
+          {/* Payment & Insurance */}
+          <fieldset className="flex flex-col gap-6 border border-[#2A2A2A] p-8">
+            <legend className="text-sm font-display uppercase tracking-widest text-gold">
+              {language === 'es' ? 'Pago y Seguro' : 'Payment & Insurance'}
+            </legend>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="flex flex-col gap-2">
+                <label htmlFor="transferNumber" className={labelClass}>
+                  {copy.registration.transferNumber}
+                  <span className="text-red-500 ml-1">*</span>
+                </label>
+                <input
+                  id="transferNumber"
+                  name="transferNumber"
+                  type="text"
+                  required
+                  maxLength={60}
+                  placeholder={copy.registration.transferNumberPlaceholder}
+                  value={formData.transferNumber}
+                  onChange={handleChange}
+                  className={inputClass}
+                />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label htmlFor="insuranceProvider" className={labelClass}>
+                  {copy.registration.insuranceProvider}
+                  <span className="text-red-500 ml-1">*</span>
+                </label>
+                <input
+                  id="insuranceProvider"
+                  name="insuranceProvider"
+                  type="text"
+                  required
+                  maxLength={60}
+                  placeholder={copy.registration.insuranceProviderPlaceholder}
+                  value={formData.insuranceProvider}
                   onChange={handleChange}
                   className={inputClass}
                 />
