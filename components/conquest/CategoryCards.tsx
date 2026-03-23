@@ -75,7 +75,7 @@ export function CategoryCards() {
             <ul className="flex flex-col gap-2">
               <li className="flex items-start gap-3">
                 <CheckCircle size={16} className="text-gold flex-shrink-0 mt-0.5" aria-hidden="true" />
-                <span className="text-sm text-foreground/80 font-sans">{agesLabel}: {amateur.ageMin}–{amateur.ageMax ?? noLimitLabel}</span>
+                <span className="text-sm text-foreground/80 font-sans">18+</span>
               </li>
             </ul>
 
@@ -155,7 +155,7 @@ export function CategoryCards() {
             <ul className="flex flex-col gap-2">
               <li className="flex items-start gap-3">
                 <CheckCircle size={16} className="text-gold flex-shrink-0 mt-0.5" aria-hidden="true" />
-                <span className="text-sm text-foreground/80 font-sans">{agesLabel}: {pro.ageMin}–{pro.ageMax ?? noLimitLabel}</span>
+                <span className="text-sm text-foreground/80 font-sans">18+</span>
               </li>
             </ul>
 

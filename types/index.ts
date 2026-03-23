@@ -11,6 +11,10 @@ export type Stage = {
     es: string
     en: string
   }
+  penalties?: {
+    es: string[]
+    en: string[]
+  }
   videoUrl?: string
 }
 

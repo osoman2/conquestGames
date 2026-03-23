@@ -108,11 +108,7 @@ export function AboutSection() {
             ))}
           </div>
 
-          {/* Floating stat card */}
-          <div className="absolute -bottom-6 -left-6 bg-[#0E0E0E] border border-[#2A2A2A] p-6 hidden md:flex flex-col gap-1">
-            <span className="font-display text-4xl font-bold text-gold">4.8</span>
-            <span className="text-xs uppercase tracking-widest text-muted-foreground font-sans">km totales</span>
-          </div>
+
         </div>
       </div>
     </section>

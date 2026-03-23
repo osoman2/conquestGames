@@ -8,25 +8,24 @@ const eventInfo = {
   location: {
     city: 'Lima',
     country: 'Perú',
-    venue: 'Por confirmar',
+    venue: 'Parque Zonal Lomas de Lúcumo, Lima',
   },
   format: 'Hybrid — Running + Functional',
   maxAthletes: 100,
-  spotsRemaining: 27,
   categories: [
     {
       id: 'amateur',
       name: 'Amateur',
       type: 'Team (2 persons)',
-      timeLimit: '1 hour',
-      description: 'Team of 2 athletes sharing the effort across functional stations.',
+      timeLimit: '75 minutes',
+      description: 'Team of 2 athletes. Both members must run together at all times. Course guide available.',
     },
     {
       id: 'pro',
       name: 'Pro',
       type: 'Individual',
-      timeLimit: '1 hour',
-      description: 'Solo performance — competitive ranking and official podium.',
+      timeLimit: '60 minutes',
+      description: 'Solo performance — no substitutions, eligible for the Conquest Ranking.',
     },
   ],
   circuit: {
@@ -34,12 +33,12 @@ const eventInfo = {
     totalStations: 7,
     stations: [
       { order: 1, type: 'running', name: 'Running 1', detail: '1.2 km' },
-      { order: 2, type: 'functional', name: 'Kettlebell Swings', detail: '30 reps' },
+      { order: 2, type: 'functional', name: 'Farmer Carry', detail: '2 straights' },
       { order: 3, type: 'running', name: 'Running 2', detail: '1.2 km' },
-      { order: 4, type: 'functional', name: 'Farmer Carry', detail: '3 straights' },
+      { order: 4, type: 'functional', name: 'Kettlebell Swings', detail: '30 reps' },
       { order: 5, type: 'running', name: 'Running 3', detail: '1.2 km' },
-      { order: 6, type: 'functional', name: 'Burpee Broad Jumps', detail: '3 straights' },
-      { order: 7, type: 'running', name: 'Final Run', detail: '1.2 km' },
+      { order: 6, type: 'functional', name: 'Burpees Forward', detail: '2 straights' },
+      { order: 7, type: 'running', name: 'Final Running', detail: '1.2 km' },
     ],
   },
   contact: {

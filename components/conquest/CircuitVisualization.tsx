@@ -189,53 +189,61 @@ export function CircuitVisualization() {
                 className="absolute top-5 right-5 text-muted-foreground hover:text-foreground transition-colors" aria-label="Cerrar">
                 <X size={16}/>
               </button>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="flex flex-col gap-4">
-                  <span className={`self-start text-xs font-display uppercase tracking-widest border px-2 py-0.5 ${difficultyStyle[selectedStage.difficulty]}`}>
-                    {selectedStage.difficulty}
-                  </span>
-                  <h3 className="font-display text-2xl md:text-3xl font-bold uppercase text-foreground pr-6">
-                    {language === 'es' ? selectedStage.nameEs : selectedStage.nameEn}
-                  </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {language === 'es' ? selectedStage.descriptionEs : selectedStage.descriptionEn}
+              <div className="flex flex-col gap-4">
+                <span className={`self-start text-xs font-display uppercase tracking-widest border px-2 py-0.5 ${difficultyStyle[selectedStage.difficulty]}`}>
+                  {selectedStage.difficulty}
+                </span>
+                <h3 className="font-display text-2xl md:text-3xl font-bold uppercase text-foreground pr-6">
+                  {language === 'es' ? selectedStage.nameEs : selectedStage.nameEn}
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  {language === 'es' ? selectedStage.descriptionEs : selectedStage.descriptionEn}
+                </p>
+                {(selectedStage.distance || selectedStage.reps) && (
+                  <div className="flex gap-6">
+                    {selectedStage.distance && (
+                      <div className="flex flex-col gap-0.5">
+                        <span className="text-[10px] text-muted-foreground uppercase font-display tracking-widest">{language === 'es' ? 'Distancia' : 'Distance'}</span>
+                        <span className="text-2xl font-bold text-gold font-display">{selectedStage.distance}</span>
+                      </div>
+                    )}
+                    {selectedStage.reps && (
+                      <div className="flex flex-col gap-0.5">
+                        <span className="text-[10px] text-muted-foreground uppercase font-display tracking-widest">Reps</span>
+                        <span className="text-2xl font-bold text-gold font-display">{selectedStage.reps}</span>
+                      </div>
+                    )}
+                  </div>
+                )}
+                <div className="flex flex-col gap-2 bg-[#0A0A0A] border border-[#2A2A2A] p-4 mt-2">
+                  <div className="flex items-center gap-2 text-gold">
+                    <AlertTriangle size={13} aria-hidden="true"/>
+                    <span className="text-[10px] font-display uppercase tracking-widest font-semibold">
+                      {language === 'es' ? 'Consejo Táctico' : 'Tactical Tip'}
+                    </span>
+                  </div>
+                  <p className="text-muted-foreground text-sm italic">
+                    {language === 'es' ? selectedStage.tactics.es : selectedStage.tactics.en}
                   </p>
-                  {(selectedStage.distance || selectedStage.reps) && (
-                    <div className="flex gap-6">
-                      {selectedStage.distance && (
-                        <div className="flex flex-col gap-0.5">
-                          <span className="text-[10px] text-muted-foreground uppercase font-display tracking-widest">{language === 'es' ? 'Distancia' : 'Distance'}</span>
-                          <span className="text-2xl font-bold text-gold font-display">{selectedStage.distance}</span>
-                        </div>
-                      )}
-                      {selectedStage.reps && (
-                        <div className="flex flex-col gap-0.5">
-                          <span className="text-[10px] text-muted-foreground uppercase font-display tracking-widest">Reps</span>
-                          <span className="text-2xl font-bold text-gold font-display">{selectedStage.reps}</span>
-                        </div>
-                      )}
-                    </div>
-                  )}
                 </div>
-                <div className="flex flex-col gap-4">
-                  <div className="flex flex-col gap-2 bg-[#0A0A0A] border border-[#2A2A2A] p-4">
-                    <div className="flex items-center gap-2 text-gold">
+                {selectedStage.penalties && (
+                  <div className="flex flex-col gap-2 bg-red-950/20 border border-red-800/30 p-4 mt-2">
+                    <div className="flex items-center gap-2 text-red-400">
                       <AlertTriangle size={13} aria-hidden="true"/>
                       <span className="text-[10px] font-display uppercase tracking-widest font-semibold">
-                        {language === 'es' ? 'Consejo Táctico' : 'Tactical Tip'}
+                        {language === 'es' ? 'Sanciones' : 'Penalties'}
                       </span>
                     </div>
-                    <p className="text-muted-foreground text-sm italic">
-                      {language === 'es' ? selectedStage.tactics.es : selectedStage.tactics.en}
-                    </p>
+                    <ul className="flex flex-col gap-1">
+                      {(language === 'es' ? selectedStage.penalties.es : selectedStage.penalties.en).map((p, i) => (
+                        <li key={i} className="text-red-300/80 text-sm leading-relaxed flex gap-2">
+                          <span className="text-red-500 mt-0.5 flex-shrink-0">•</span>
+                          <span>{p}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <div className="bg-[#0A0A0A] border border-[#2A2A2A] aspect-video flex items-center justify-center">
-                    <div className="flex flex-col items-center gap-2">
-                      <AlertCircle size={24} className="text-gold/30"/>
-                      <span className="text-[10px] font-mono text-gold/40">[ESPERANDO VIDEO]</span>
-                    </div>
-                  </div>
-                </div>
+                )}
               </div>
             </div>
           </div>

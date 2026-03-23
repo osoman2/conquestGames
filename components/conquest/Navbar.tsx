@@ -22,6 +22,8 @@ export function Navbar() {
     { label: copy.navbar.about, href: '#about' },
     { label: copy.navbar.circuit, href: '#circuit' },
     { label: copy.navbar.categories, href: '#categories' },
+    { label: copy.navbar.why, href: '#register' },
+    { label: copy.navbar.eventInfo, href: '#event-info' },
     { label: copy.navbar.regulations, href: '#regulations' },
   ]
 

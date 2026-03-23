@@ -13,6 +13,10 @@ export const circuitStages: Stage[] = [
       es: 'Mantén un ritmo constante. No te vacíes en la primera recta.',
       en: 'Keep a steady pace. Don\'t empty your tank on the first straight.',
     },
+    penalties: {
+      es: ['Amateur: ambos integrantes del equipo deben correr juntos en todo momento.'],
+      en: ['Amateur: both team members must run together at all times.'],
+    },
   },
   {
     id: 'farmer-carry',
@@ -25,6 +29,10 @@ export const circuitStages: Stage[] = [
     tactics: {
       es: 'Mantén los hombros relajados. La velocidad es secundaria a la seguridad.',
       en: 'Keep shoulders relaxed. Speed is secondary to safety.',
+    },
+    penalties: {
+      es: ['Si la kettlebell toca el piso antes de completar una recta, deberán regresar al inicio de esa recta.'],
+      en: ['If the kettlebell touches the ground before completing a straight, athletes must return to the start of that straight.'],
     },
   },
   {
@@ -39,6 +47,10 @@ export const circuitStages: Stage[] = [
       es: 'Controla la respiración. Usa estos metros para recuperarte.',
       en: 'Control your breathing. Use these meters to recover.',
     },
+    penalties: {
+      es: ['Amateur: ambos integrantes del equipo deben correr juntos en todo momento.'],
+      en: ['Amateur: both team members must run together at all times.'],
+    },
   },
   {
     id: 'kettlebell-swings',
@@ -52,6 +64,16 @@ export const circuitStages: Stage[] = [
       es: 'Activa los glúteos en cada swing. Los jueces contarán solo las reps perfectas.',
       en: 'Activate glutes on every swing. Judges will only count perfect reps.',
     },
+    penalties: {
+      es: [
+        'Mínimo altura de pecho. Rep mal ejecutada = no cuenta (PROS).',
+        'Amateur: si el equipo no completa las 30 reps, no avanzan a la siguiente sección.',
+      ],
+      en: [
+        'Minimum chest height. Bad rep = doesn\'t count (PROS).',
+        'Amateur: if the team does not complete 30 reps, they cannot advance to the next section.',
+      ],
+    },
   },
   {
     id: 'running3',
@@ -64,6 +86,10 @@ export const circuitStages: Stage[] = [
     tactics: {
       es: 'No te quedes sin energía ahora. La última estación es la más dura.',
       en: 'Don\'t burn out now. The last station is the hardest.',
+    },
+    penalties: {
+      es: ['Amateur: ambos integrantes del equipo deben correr juntos en todo momento.'],
+      en: ['Amateur: both team members must run together at all times.'],
     },
   },
   {
@@ -90,6 +116,10 @@ export const circuitStages: Stage[] = [
     tactics: {
       es: 'Todo está en la mente. Termina fuerte.',
       en: 'It\'s all mental. Finish strong.',
+    },
+    penalties: {
+      es: ['Amateur: ambos integrantes del equipo deben correr juntos y cruzar la meta juntos.'],
+      en: ['Amateur: both team members must run together and cross the finish line together.'],
     },
   },
 ]
