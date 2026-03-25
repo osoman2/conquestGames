@@ -2,7 +2,7 @@
 
 import { useLanguage } from '@/lib/language-context'
 import { siteCopy } from '@/content/site-copy'
-import { MapPin, Mail, Instagram, Twitter, Youtube } from 'lucide-react'
+import { MapPin, Mail, Instagram, Phone } from 'lucide-react'
 
 export function Footer() {
   const { language } = useLanguage()
@@ -45,20 +45,24 @@ export function Footer() {
           </p>
           {/* Social */}
           <div className="flex gap-3 mt-2">
-            {[
-              { Icon: Instagram, label: 'Instagram', href: '#' },
-              { Icon: Twitter, label: 'Twitter', href: '#' },
-              { Icon: Youtube, label: 'Youtube', href: '#' },
-            ].map(({ Icon, label, href }) => (
-              <a
-                key={label}
-                href={href}
-                aria-label={label}
-                className="flex items-center justify-center w-9 h-9 border border-[#2A2A2A] text-muted-foreground hover:border-gold hover:text-gold transition-all duration-200"
-              >
-                <Icon size={15} aria-hidden="true" />
-              </a>
-            ))}
+            <a
+              href="https://www.instagram.com/con.questgames"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="flex items-center justify-center w-9 h-9 border border-[#2A2A2A] text-muted-foreground hover:border-gold hover:text-gold transition-all duration-200"
+            >
+              <Instagram size={15} aria-hidden="true" />
+            </a>
+            <a
+              href="https://wa.me/51990809868"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+              className="flex items-center justify-center w-9 h-9 border border-[#2A2A2A] text-muted-foreground hover:border-gold hover:text-gold transition-all duration-200"
+            >
+              <Phone size={15} aria-hidden="true" />
+            </a>
           </div>
         </div>
 
@@ -89,11 +93,22 @@ export function Footer() {
             <div className="flex items-center gap-3 text-muted-foreground">
               <Mail size={14} className="text-gold flex-shrink-0" aria-hidden="true" />
               <a
-                href="mailto:info@conquestgames.pe"
+                href="mailto:Info@theconquestgames.com"
                 className="text-sm font-sans hover:text-gold transition-colors"
               >
-                info@conquestgames.pe
+                Info@theconquestgames.com
               </a>
+            </div>
+            <div className="flex items-center gap-3 text-muted-foreground">
+              <Phone size={14} className="text-gold flex-shrink-0" aria-hidden="true" />
+              <div className="flex flex-col gap-1">
+                <a href="https://wa.me/51990809868" target="_blank" rel="noopener noreferrer" className="text-sm font-sans hover:text-gold transition-colors">
+                  +51 990 809 868
+                </a>
+                <a href="https://wa.me/51940165020" target="_blank" rel="noopener noreferrer" className="text-sm font-sans hover:text-gold transition-colors">
+                  +51 940 165 020
+                </a>
+              </div>
             </div>
             <div className="flex items-center gap-3 text-muted-foreground">
               <MapPin size={14} className="text-gold flex-shrink-0" aria-hidden="true" />

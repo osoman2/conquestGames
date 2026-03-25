@@ -233,7 +233,7 @@ export const translations = {
         equipo:
           'Sí, en la categoría Amateur compites en equipos de 2 personas. Pueden distribuir el esfuerzo en las estaciones funcionales.',
         default:
-          'Gracias por tu pregunta. Para más información, escríbenos a info@conquestgames.pe o inscríbete directamente en el formulario.',
+          'Gracias por tu pregunta. Para más información, escríbenos a Info@theconquestgames.com o por WhatsApp al +51 990 809 868.',
       },
     },
     roadmap: {
@@ -276,7 +276,7 @@ export const translations = {
     footer: {
       tagline: 'Corre. Resiste. Conquista.',
       description: 'La competencia híbrida más exigente de Lima.',
-      contact: 'info@conquestgames.pe',
+      contact: 'Info@theconquestgames.com',
       location: 'Lima, Perú',
       rights: '© 2025 Conquest Games. Todos los derechos reservados.',
       links: {
@@ -521,7 +521,7 @@ export const translations = {
         equipo:
           'Yes, in the Amateur category you compete in teams of 2 people. You can distribute the effort across functional stations.',
         default:
-          'Thank you for your question. For more information, email us at info@conquestgames.pe or register directly on the form.',
+          'Thank you for your question. For more information, email us at Info@theconquestgames.com or WhatsApp us at +51 990 809 868.',
       },
     },
     roadmap: {
@@ -564,7 +564,7 @@ export const translations = {
     footer: {
       tagline: 'Run. Resist. Conquer.',
       description: "Lima's most demanding hybrid competition.",
-      contact: 'info@conquestgames.pe',
+      contact: 'Info@theconquestgames.com',
       location: 'Lima, Peru',
       rights: '© 2025 Conquest Games. All rights reserved.',
       links: {

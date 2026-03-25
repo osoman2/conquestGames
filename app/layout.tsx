@@ -21,12 +21,16 @@ export const metadata: Metadata = {
   description:
     'Conquest Games es una competencia híbrida de élite que combina running y estaciones funcionales. 16 de mayo · Lima, Perú. Inscríbete ahora.',
   keywords: ['Conquest Games', 'competencia', 'running', 'funcional', 'Lima', 'Perú', 'atletas', 'HYROX'],
+  icons: {
+    icon: '/branding/conquest-games-logo.svg',
+    apple: '/branding/conquest-games-logo.svg',
+  },
   openGraph: {
     title: 'Conquest Games',
     description: 'Esto no es un juego. Es una conquista.',
     type: 'website',
+    url: 'https://theconquestgames.com',
   },
-  // Cache bust v2
 }
 
 export default function RootLayout({

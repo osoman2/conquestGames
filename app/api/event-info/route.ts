@@ -45,8 +45,10 @@ const eventInfo = {
     ],
   },
   contact: {
-    email: 'info@conquestgames.pe',
-    instagram: '@conquestgames',
+    email: 'Info@theconquestgames.com',
+    instagram: '@con.questgames',
+    whatsapp1: '+51 990 809 868',
+    whatsapp2: '+51 940 165 020',
   },
   status: 'registration_open',
 }

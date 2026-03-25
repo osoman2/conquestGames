@@ -16,7 +16,7 @@ Información clave:
 - Circuito (orden): Running 1 (1.2 km) → Farmer Carry (2 rectas) → Running 2 (1.2 km) → Kettlebell Swings (30 reps) → Running 3 (1.2 km) → Burpees Avanzando (2 rectas) → Running Final (1.2 km). Total: 4.8 km, 7 estaciones.
 - Cupos: Amateur: 25 equipos (50 personas en total) | Pro: 50 atletas individuales. Total: 75 inscripciones, 100 atletas. ¡Cupos muy limitados!
 - Precio: Disponible en el formulario de inscripción en la web
-- Contacto: info@conquestgames.pe
+- Contacto: Info@theconquestgames.com | Instagram: @con.questgames | WhatsApp: +51 990 809 868 / +51 940 165 020
 
 Si alguien pregunta cómo inscribirse, responde: "Para inscribirte: 1) Ve a la sección Inscripción en esta página 2) Completa el formulario con tus datos personales 3) Elige tu categoría (Amateur o Pro) 4) Acepta los términos y envía. ¡Quedan pocos cupos!"
 Si preguntan sobre el circuito o mapa, menciona que pueden verlo en la sección Circuito de la página.
@@ -39,7 +39,7 @@ Key info:
 - Circuit (order): Running 1 (1.2 km) → Farmer Carry (2 straights) → Running 2 (1.2 km) → Kettlebell Swings (30 reps) → Running 3 (1.2 km) → Burpees Forward (2 straights) → Final Running (1.2 km). Total: 4.8 km, 7 stations.
 - Spots: Amateur: 25 teams (50 athletes total) | Pro: 50 individual athletes. Total: 75 registrations, 100 athletes. Very limited!
 - Price: Available in the registration form on the website
-- Contact: info@conquestgames.pe
+- Contact: Info@theconquestgames.com | Instagram: @con.questgames | WhatsApp: +51 990 809 868 / +51 940 165 020
 
 If someone asks how to register, say: "To register: 1) Go to the Registration section on this page 2) Fill in your personal details 3) Choose your category (Amateur or Pro) 4) Accept the terms and submit. Spots are very limited!"
 If they ask about the circuit or map, mention they can see it in the Circuit section.

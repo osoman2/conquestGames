@@ -109,8 +109,8 @@ export function ChatAssistantMock() {
 
           {/* Header */}
           <div className="flex items-center gap-3 px-5 py-4 border-b border-[#1A1A1A]">
-            <div className="flex items-center justify-center w-8 h-8 bg-gold/10 border border-gold/30">
-              <Bot size={16} className="text-gold" aria-hidden="true" />
+            <div className="flex items-center justify-center w-8 h-8 bg-gold/10 border border-gold/30 overflow-hidden">
+              <img src="/branding/conquest-games-logo.svg" alt="Conquest Games" className="w-6 h-6 object-contain" aria-hidden="true" />
             </div>
             <div className="flex flex-col">
               <span className="font-display text-sm font-bold uppercase tracking-widest text-foreground">
