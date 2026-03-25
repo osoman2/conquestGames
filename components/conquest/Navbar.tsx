@@ -25,6 +25,7 @@ export function Navbar() {
     { label: copy.navbar.why, href: '#register' },
     { label: copy.navbar.eventInfo, href: '#event-info' },
     { label: copy.navbar.regulations, href: '#regulations' },
+    { label: copy.navbar.sponsors, href: '#sponsors', highlight: true },
   ]
 
   return (
@@ -48,7 +49,11 @@ export function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="text-xs font-display tracking-widest uppercase text-muted-foreground hover:text-gold transition-colors duration-200"
+              className={`text-xs font-display tracking-widest uppercase transition-colors duration-200 ${
+                link.highlight
+                  ? 'text-gold hover:text-gold-bright'
+                  : 'text-muted-foreground hover:text-gold'
+              }`}
             >
               {link.label}
             </a>

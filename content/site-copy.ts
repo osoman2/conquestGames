@@ -9,6 +9,7 @@ export const siteCopy = {
       regulations: 'Regulaciones',
       why: 'Inscripción',
       eventInfo: 'Detalles',
+      sponsors: 'Sponsors',
     },
     hero: {
       heading: 'CONQUEST GAMES',
@@ -128,6 +129,7 @@ export const siteCopy = {
       regulations: 'Regulations',
       why: 'Register',
       eventInfo: 'Details',
+      sponsors: 'Sponsors',
     },
     hero: {
       heading: 'CONQUEST GAMES',
