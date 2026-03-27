@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+﻿import { NextResponse } from 'next/server'
 
 const eventInfo = {
   name: 'Conquest Games',
@@ -36,16 +36,16 @@ const eventInfo = {
     },
   ],
   circuit: {
-    totalRunningDistance: '1.9 km (4 x 475 m)',
+    totalRunningDistance: '3.325 km (3x950m + 475m)',
     totalStations: 7,
     stations: [
-      { order: 1, type: 'running', name: 'Running 1', detail: '475 m' },
+      { order: 1, type: 'running', name: 'Running 1', detail: '2 vueltas' },
       { order: 2, type: 'functional', name: 'Kettlebell Swings', detail: '30 reps (2-hand swing)' },
-      { order: 3, type: 'running', name: 'Running 2', detail: '475 m' },
+      { order: 3, type: 'running', name: 'Running 2', detail: '2 vueltas' },
       { order: 4, type: 'functional', name: 'Farmer Carry', detail: '2 straights' },
-      { order: 5, type: 'running', name: 'Running 3', detail: '475 m' },
+      { order: 5, type: 'running', name: 'Running 3', detail: '2 vueltas' },
       { order: 6, type: 'functional', name: 'Burpees', detail: '2 straights' },
-      { order: 7, type: 'running', name: 'Final Run (jog to finish)', detail: '475 m' },
+      { order: 7, type: 'running', name: 'Trote Final', detail: '1 vuelta' },
     ],
   },
   contact: {
