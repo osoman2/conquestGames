@@ -141,6 +141,12 @@ export function CircuitVisualization() {
                         {stage.distance ?? `${stage.reps} reps`}
                       </text>
                     )}
+                    {stage.distanceSub && (
+                      <text x={cx} y={metricY + 16} textAnchor="middle" fontSize="10"
+                        fill={sel ? '#C9A84C' : '#666'} fontFamily="sans-serif">
+                        {stage.distanceSub}
+                      </text>
+                    )}
                     {/* Label badge — only for exercise stations */}
                     {stat && (
                       <>
@@ -205,6 +211,9 @@ export function CircuitVisualization() {
                       <div className="flex flex-col gap-0.5">
                         <span className="text-[10px] text-muted-foreground uppercase font-display tracking-widest">{language === 'es' ? 'Distancia' : 'Distance'}</span>
                         <span className="text-2xl font-bold text-gold font-display">{selectedStage.distance}</span>
+                        {selectedStage.distanceSub && (
+                          <span className="text-sm text-muted-foreground font-display">{selectedStage.distanceSub}</span>
+                        )}
                       </div>
                     )}
                     {selectedStage.reps && (

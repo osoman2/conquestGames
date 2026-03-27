@@ -13,7 +13,7 @@ Información clave:
   · Pro: individual. KB Mujeres 8 kg / Hombres 15 kg. Límite 55 min. Rep mal hecha: el juez no la cuenta. Los 6 mejores pasan a la Final. Precio: S/.200 por persona.
 - Edad mínima: 18 años
 - Requisitos: consentimiento firmado, certificado médico, experiencia en funcional
-- Circuito (orden correcto): 2 vueltas → KB Swings 30 reps (2 manos) → 2 vueltas → Caminata Granjero x2 rectas → 2 vueltas → Burpees x2 rectas → 1 vuelta final a la meta. Cada tramo de run antes de estacion = 2 vueltas; el final = 1 vuelta.
+- Circuito (orden correcto): 2 vueltas (475m c/u = 950m) → KB Swings 30 reps (2 manos) → 2 vueltas (475m c/u = 950m) → Caminata Granjero x2 rectas → 2 vueltas (475m c/u = 950m) → Burpees x2 rectas → 1 vuelta final (475m) a la meta. Cada vuelta mide exactamente 475m. Total running: 3.325 km.
 - Penalizaciones: KB Swings mínimo a altura pecho (PROS: rep mala = no cuenta; Amateur: si 1 integrante no completa 30 reps = equipo no avanza). Farmer Carry: KB toca el piso = 1 recta adicional.
 - Cupos: Amateur 25 equipos (50 personas) | Pro 50 atletas individuales. Total: 100 atletas. ¡Cupos muy limitados!
 - Contacto: Info@theconquestgames.com | Instagram: @con.questgames | WhatsApp: +51 990 809 868 / +51 940 165 020
@@ -37,7 +37,7 @@ Key info:
   · Pro: individual. KB Women 8 kg / Men 15 kg. Time limit 55 min. Poorly executed rep: judge does not count it. Top 6 advance to the Final. Price: S/.200 per person.
 - Minimum age: 18 years
 - Requirements: signed consent, medical certificate, functional training experience
-- Circuit (correct order): 2 laps → KB Swings 30 reps (2-hand) → 2 laps → Farmer Carry x2 straights → 2 laps → Burpees x2 straights → 1 final lap to finish. Each run before a station = 2 laps; final = 1 lap.
+- Circuit (correct order): 2 laps (475m each = 950m) → KB Swings 30 reps (2-hand) → 2 laps (475m each = 950m) → Farmer Carry x2 straights → 2 laps (475m each = 950m) → Burpees x2 straights → 1 final lap (475m) to finish. Each lap is exactly 475m. Total running: 3.325 km.
 - Key penalties: KB Swings min chest height (PROS: bad rep = no count; Amateur: 1 member misses 30 reps = team cannot advance). Farmer Carry: KB touches ground = 1 extra straight.
 - Spots: Amateur 25 teams (50 athletes) | Pro 50 individuals. Total: 100 athletes. Very limited!
 - Contact: Info@theconquestgames.com | Instagram: @con.questgames | WhatsApp: +51 990 809 868 / +51 940 165 020

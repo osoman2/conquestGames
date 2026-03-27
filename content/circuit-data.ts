@@ -8,6 +8,7 @@ export const circuitStages: Stage[] = [
     descriptionEs: '2 vueltas de carrera para ingresar a la primera estación. Arranca fuerte pero conserva energía.',
     descriptionEn: '2 laps to enter the first station. Start strong but conserve energy.',
     distance: '2 vueltas',
+    distanceSub: '2 × 475m',
     difficulty: 'easy',
     tactics: {
       es: 'Mantén un ritmo constante. No te vacíes en la primera recta.',
@@ -48,6 +49,7 @@ export const circuitStages: Stage[] = [
     descriptionEs: '2 vueltas de carrera para ingresar a la siguiente estación. Recupera el aliento tras los Swings.',
     descriptionEn: '2 laps to enter the next station. Recover your breath after the Swings.',
     distance: '2 vueltas',
+    distanceSub: '2 × 475m',
     difficulty: 'medium',
     tactics: {
       es: 'Controla la respiración. Usa estos metros para recuperarte.',
@@ -82,6 +84,7 @@ export const circuitStages: Stage[] = [
     descriptionEs: '2 vueltas de carrera para ingresar a la última estación. Ya llevás más de la mitad — no aflojes.',
     descriptionEn: '2 laps to enter the last station. You\'re past halfway — don\'t ease up.',
     distance: '2 vueltas',
+    distanceSub: '2 × 475m',
     difficulty: 'medium',
     tactics: {
       es: 'No te quedes sin energía ahora. La última estación es la más dura.',
@@ -112,6 +115,7 @@ export const circuitStages: Stage[] = [
     descriptionEs: '1 vuelta final para cruzar la meta. Todo lo que entrenaste llega a este momento.',
     descriptionEn: '1 final lap to cross the finish line. Everything you trained for comes down to this.',
     distance: '1 vuelta',
+    distanceSub: '475m',
     difficulty: 'hard',
     tactics: {
       es: 'Todo está en la mente. Termina fuerte.',

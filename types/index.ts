@@ -5,6 +5,7 @@ export type Stage = {
   descriptionEs: string
   descriptionEn: string
   distance?: string
+  distanceSub?: string
   reps?: number
   difficulty: 'easy' | 'medium' | 'hard'
   tactics: {
