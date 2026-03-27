@@ -116,7 +116,7 @@ export function CircuitVisualization() {
                 // - metric: fixed at 62px from top
                 // - label badge (stations only): bottom 22px
                 const nameY = z.y + (l2 ? 32 : 40)
-                const metricY = z.y + 64
+                const metricY = z.y + (stage.distanceSub ? 54 : 64)
 
                 return (
                   <g key={stageId} onClick={() => handleToggle(stageId)} className="cursor-pointer"
